@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/index.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tareas</title>
+  </head>
+  <body>
+    <div id="root">
+        <button id="addTask" type="button">Agregar Tarea</button>
+        <table id="tasks">
+          <tr>
+            <th>En Proceso</th>
+            <th>Completadas</th>
+          </tr>
+          <tr>
+            <td><div id="inProgress" class="task-list"></div></td>
+            <td><div id="completed" class="task-list"></div></td>
+          </tr>
+        </table>
+    </div>
+    <template id="taskTemplate">
+        <label id="task-{{id}}">
+            <input type="text" id="name-{{id}}"/>
+            <input type="checkbox" id="completed-{{id}}"/>
+            <button type="button" id="delete-{{id}}">Eliminar</button>
+        </label>
+    </template>
+    <script src="./dist/main.js"></script>
+  </body>
+</html>
