@@ -7,7 +7,7 @@ class Task {
         this.completed = completed;
     }
 }
-let tasks = [];
+let tasks = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")).map((t) => new Task(t.name, t.completed)) : [];
 const addTaskButton = document.getElementById("addTask");
 const inProgressOutput = document.getElementById("inProgress");
 const completedOutput = document.getElementById("completed");
@@ -47,8 +47,10 @@ const refreshTasks = () => {
     tasks.forEach((task, index) => {
         addChild(task.completed ? completedOutput : inProgressOutput, displayTask(task, index));
     });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 addTaskButton.addEventListener("click", () => {
     tasks.push(new Task());
     refreshTasks();
 });
+refreshTasks();
